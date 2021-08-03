@@ -20,16 +20,20 @@ button.onmousedown = () => {
         console.log("started")
         started = true
         o.start(0)
+        g.gain.setValueAtTime(0.00001, context.currentTime)
     }
     console.log("onmousedown")
-    g.gain.cancelScheduledValues(context.currentTime)
-    g.gain.setValueAtTime(0.00001, context.currentTime)
-    g.gain.exponentialRampToValueAtTime(0.5, context.currentTime + 0.04)
+    setTimeout(() => {
+        g.gain.cancelScheduledValues(context.currentTime)
+        g.gain.setValueAtTime(g.gain.value, context.currentTime);
+        g.gain.exponentialRampToValueAtTime(0.5, context.currentTime + 0.04)
+    }, 10);
 }
 
 function stopSound() {
     g.gain.cancelScheduledValues(context.currentTime)
-    g.gain.exponentialRampToValueAtTime(0.00001, context.currentTime + 3)
+    g.gain.setValueAtTime(g.gain.value, context.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.00001, context.currentTime + 0.04)
 }
 
 document.onmouseup = stopSound

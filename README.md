@@ -1,1 +1,1 @@
-# solfedge
+# solfege

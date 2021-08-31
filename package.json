@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup src/index.js --file bundle.js --format iife"
+    "build": "webpack",
+    "dev": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -29,5 +30,10 @@
     "@tensorflow-models/posenet": "^2.2.2",
     "@tensorflow/tfjs": "^3.9.0",
     "rollup": "^2.56.3"
+  },
+  "devDependencies": {
+    "webpack": "^5.51.1",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.0.0"
   }
 }

@@ -1,3 +1,8 @@
+import "@tensorflow/tfjs"
+import * as posenet from "@tensorflow-models/posenet"
+
+loadPosenet()
+
 // It's javascript!
 const video = document.getElementById("video")
 const button = document.getElementById("button")
@@ -16,6 +21,7 @@ g.connect(context.destination)
 
 let started = false
 button.onmousedown = () => {
+    runInference()
     if (!started) {
         console.log("started")
         started = true
@@ -34,6 +40,20 @@ function stopSound() {
     g.gain.cancelScheduledValues(context.currentTime)
     g.gain.setValueAtTime(g.gain.value, context.currentTime);
     g.gain.exponentialRampToValueAtTime(0.00001, context.currentTime + 0.04)
+}
+
+var net
+function loadPosenet() {
+    posenet.load()
+        .then((n) => {
+            net = n
+            console.log("loaded")
+        })
+}
+
+async function runInference() {
+    const pose = await net.estimateSinglePose(video)
+    console.log(pose)
 }
 
 document.onmouseup = stopSound

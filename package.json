@@ -1,0 +1,33 @@
+{
+  "name": "solfege",
+  "version": "1.0.0",
+  "description": "Julie Andrews would be proud.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup src/index.js --file bundle.js --format iife"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isaachess/solfege.git"
+  },
+  "keywords": [
+    "music",
+    "solfege",
+    "web",
+    "audio",
+    "machine",
+    "learning"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/isaachess/solfege/issues"
+  },
+  "homepage": "https://github.com/isaachess/solfege#readme",
+  "dependencies": {
+    "@tensorflow-models/posenet": "^2.2.2",
+    "@tensorflow/tfjs": "^3.9.0",
+    "rollup": "^2.56.3"
+  }
+}
